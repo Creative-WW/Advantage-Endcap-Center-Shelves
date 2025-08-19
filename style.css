@@ -1,0 +1,134 @@
+/*style.css*/
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #f9f9f9;
+  text-align: center;
+  padding: 50px 0;
+}
+
+h1,
+footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+h1 {
+  top: 0;
+  background: #ea0000;
+  color: #fff;
+  margin: 0;
+  padding: 10px;
+  font-size: 1.4rem;
+}
+
+/* AR Button wrapper (updated to be responsive and square) */
+#ar-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 98vw;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 1001;
+  margin: 0;
+}
+
+/* Wrapper to contain main image + icon overlay */
+.ar-image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  /*overflow: hidden;*/
+}
+
+/* Main image (Q-Rack.png only — updated for responsive sizing) */
+.ar-image-wrapper img.main-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  /*transition: transform 0.2s;*/
+  display: block;
+  transform: scale(1.0);
+  transform-origin: center center; /* Optional: ensures it's centered */
+}
+
+/* Hover zoom */
+.ar-image-wrapper img.main-image:hover {
+  transform: scale(1.05);
+}
+
+/* Tap icon overlay (relative position with updated pulse animation) */
+.ar-icon {
+  position: absolute;
+  bottom: 11%;
+  right: 17%;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7; /* Start faded */
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Fallback message (now normal flow) */
+.fallback {
+  position: static; /* remove fixed */
+  transform: none;
+  margin-top: 10px; /* space below button */
+  color: #666;
+  font-size: 0.9rem;
+  z-index: auto;
+  text-align: center;
+}
+
+/* Footer styling */
+footer {
+  bottom: 0;
+  background: #000;
+  color: #fff;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+}
+
+footer img {
+  height: 20px;
+}
+
+/* Disabled button (desktop fallback) */
+.disabled-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #ea0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
